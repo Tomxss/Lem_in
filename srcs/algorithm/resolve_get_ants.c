@@ -3,9 +3,13 @@
 
 static void	push_ant_front(t_lemin *l, t_room *path, int *ant_nb)
 {
+	char *ant;
+
+	ant = ft_itoa(path->ant);
 	path->ant = *ant_nb;
 	ft_putstr("L");
-	ft_putstr(ft_itoa(path->ant));
+	ft_putstr(ant);
+	free(ant);
 	ft_putstr("-");
 	ft_putstr(l->dup[path->id]);
 	ft_putchar(' ');
@@ -16,29 +20,35 @@ static void	push_ant_front(t_lemin *l, t_room *path, int *ant_nb)
 
 static void	ants_vacuum(t_lemin *l, t_room *path, int *ant_nb)
 {
+	char *ant;
+
 	if (path->next->id == l->room_start && *ant_nb <= l->nb_ants)
 		push_ant_front(l, path, ant_nb);
 	else if (path->next->ant > 0 && path->id != l->room_end &&
 			path->next->id != l->room_start)
 	{
+		ant = ft_itoa(path->ant);
 		path->ant = path->next->ant;
 		path->next->ant = -1;
-			ft_putstr("L");
-			ft_putstr(ft_itoa(path->ant));
-			ft_putstr("-");
-			ft_putstr(l->dup[path->id]);
-			ft_putchar(' ');
+		ft_putstr("L");
+		ft_putstr(ant);
+		free(ant);
+		ft_putstr("-");
+		ft_putstr(l->dup[path->id]);
+		ft_putchar(' ');
 	}
 	else if (path->next->ant > 0 && path->id == l->room_end &&
 			l->ant_finish < l->nb_ants)
 	{
+		ant = ft_itoa(path->ant);
 		path->ant = path->next->ant;
 		path->next->ant = -1;
-			ft_putstr("L");
-			ft_putstr(ft_itoa(path->ant));
-			ft_putstr("-");
-			ft_putstr(l->dup[path->id]);
-			ft_putchar(' ');
+		ft_putstr("L");
+		ft_putstr(ant);
+		free(ant);
+		ft_putstr("-");
+		ft_putstr(l->dup[path->id]);
+		ft_putchar(' ');
 		l->ant_finish++;
 	}
 }
