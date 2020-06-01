@@ -16,6 +16,43 @@ static int	check_beginning(const char *str, int j)
 	return (j);
 }
 
+static long	do_atoi_max_min(const char *str, long i, int j)
+{
+	while (str[j] >= '0' && str[j] <= '9')
+	{
+		i = i * 10 + (str[j]) - '0';
+		j++;
+	}
+	return (i);
+}
+
+
+long			ft_atoi_max_min(const char *str)
+{
+	long i;
+	int j;
+	int sign;
+
+	i = 0;
+	j = 0;
+	sign = 1;
+	j = check_beginning(str, j);
+	if ((str[j] == '-'))
+	{
+		if ((ft_isdigit(str[j + 1])) && (ft_isdigit(str[j - 1]) == 0))
+		{
+			sign = -1;
+			j++;
+		}
+		if ((ft_isdigit(str[j + 1])) && (ft_isdigit(str[j - 1]) != 0))
+			return (i);
+	}
+	if (str[j] == '+')
+		j = check_pos(str, j);
+	i = do_atoi_max_min(str, i, j);
+	return (i * sign);
+}
+
 static int	do_atoi(const char *str, int i, int j)
 {
 	while (str[j] >= '0' && str[j] <= '9')
@@ -25,6 +62,7 @@ static int	do_atoi(const char *str, int i, int j)
 	}
 	return (i);
 }
+
 
 int			ft_atoi(const char *str)
 {

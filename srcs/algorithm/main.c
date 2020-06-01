@@ -6,7 +6,7 @@
 /*   By: tcoetzee <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/08 09:47:42 by tcoetzee          #+#    #+#             */
-/*   Updated: 2020/06/01 09:44:08 by tcoetzee         ###   ########.fr       */
+/*   Updated: 2020/06/01 12:50:46 by tcoetzee         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ int	main(int argc, char **argv)
 	get_ants(&l);
 	free_at_end(&l);
 	free_result(&l);
-	while(1);
 	return (0);
 }

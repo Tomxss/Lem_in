@@ -3,7 +3,7 @@ a 1 0
 ##end
 aa 5 0
 ##start
-aaa 9 0
+aaa 0 2147483647
 aaaa 13 0
 a-aaa
 aaa-aaaa

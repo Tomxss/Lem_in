@@ -9,12 +9,13 @@
 
 
 
-
+#include <stdio.h>
 #include "../../includes/lem_in.h"
 
 void		check_coordonates(char **array, t_lemin *l)
 {
 	int	ret;
+	long MIN = -2147483648;
 
 	ret = -1;
 	if (array[1][0] && array[1][0] == '-' && array[1][1])
@@ -28,11 +29,28 @@ void		check_coordonates(char **array, t_lemin *l)
 			"\033[091mError: One or more X coordinates are incorrect\
 			\033[0m");
 	}
+
+	if (ft_atoi_max_min(&array[1][0]) > 2147483647 || ft_atoi_max_min(&array[1][0]) < MIN)	// -7 < -216377238
+	{
+		ft_free_double_array((void**)array);
+		free_check_if_room(l,
+			"\033[091mError: One or more X coordinates are incorrect\
+			\033[0m");
+	}
+
 	if (array[2][0] && array[2][0] == '-' && array[2][1])
 		ret = ft_check_if_num(&array[2][1]);
 	else
 		ret = ft_check_if_num(array[2]);
 	if (ret != 0)
+	{
+		ft_free_double_array((void**)array);
+		free_check_if_room(l,
+			"\033[091mError: One or more Y coordinates are incorrect\
+			\033[0m");
+	}
+
+	if (ft_atoi_max_min(&array[2][0]) > 2147483647 || ft_atoi_max_min(&array[2][0]) < MIN)	// -7 < -216377238
 	{
 		ft_free_double_array((void**)array);
 		free_check_if_room(l,

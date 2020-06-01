@@ -84,6 +84,7 @@ char					*ft_strjoin_proper(char *s1, int free1, char *s2,
 						int free2);
 size_t					ft_strlcat(char *dst, const char *src, size_t size);
 size_t					ft_strlen(const char *s);
+size_t					ft_strlen_min(const char *s);
 size_t					ft_strlen_secure(const char *s);
 char					*ft_strmap(char const *s, char (*f)(char));
 char					*ft_strmapi(char const *s, char (*f)(unsigned int,
@@ -128,6 +129,7 @@ int						ft_isupper(int c);
 
 
 int						ft_atoi(const char *str);
+long			ft_atoi_max_min(const char *str);
 long					ft_latoi(const char *str);
 int						ft_atoi_base(const char *str, int base);
 char					*ft_itoa(int n);
